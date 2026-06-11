@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content%}
+
+<div class="product_detail">
+    <div class="product_image">
+        <img src="{{product.image.url}}" alt="">
+
+    </div>
+
+
+    <div>
+        <h1>{{product.name}}</h1>
+        <h2>{{product.price}}</h2>
+        <h2>{{product.color}}</h2>
+        <h2>{{product.info}}</h2>
+        <h2>{{product.category.name}}</h2>
+        
+    </div>
+</div>
+{% endblock content%}

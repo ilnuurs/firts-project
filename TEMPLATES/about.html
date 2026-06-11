@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content%}  
+
+   <div> {{  first_name  }} </div>
+   <div>{{  age }}</div>
+    <div>
+        {% for skill in skills %}
+            {{ skill }}
+        {%  endfor %}
+    </div>
+   
+{% endblock content%}  

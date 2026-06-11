@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <h2>update product</h2>
+
+
+    {{ product }}
+    <div class="product_form">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <p>
+                <label>Название</label>
+                <input type="text" name="name" value="{{ product.name }}" required>
+            </p>
+
+            <p>
+                <label>Цена</label>
+                <input type="number" name="price" value="{{ product.price }}" required>
+            </p>
+
+            <p>
+                <label>Цвет</label>
+                <input type="text" name="color" value="{{ product.color }}" required>
+            </p>
+
+            <p>
+                <label>Описание</label>
+                <textarea name="info" value="{{ product.info }}"></textarea>
+            </p>
+
+            <p>
+                <label>Категория</label>
+                <select name="category" required>
+                    {% for cat in categories %}
+                        <option value="{{ cat.pk }}"
+                        {% if cat.id == product.category.id %} selected {% endif %}>
+                            {{ cat.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </p>
+
+            <p>
+                <label>Изображение</label>
+                <input type="file" name="image">
+                {% if product.image %}
+                    <p>Текущее: <img src="{{ product.image.url }}" width="80"></p>
+                {% endif %}
+            </p>
+
+            <p>
+                <button type="submit">Сохранить</button>
+            </p>
+            <a href="{% url 'main' %}">Отмена</a>
+        </form>
+    </div>
+
+</div>
+{% endblock content %}  

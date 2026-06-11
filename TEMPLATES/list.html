@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}  
+    <div class="contact">
+        <h2>Контакты</h2>
+        {% for contact in contacts %}
+            {{contact}}
+        {%  endfor %}
+    </div>
+
+    <div class="group">
+        <h2>лист</h2>
+        {% for group in groups%}
+            {{group}} 
+        {% endfor %}
+    </div>
+
+{% endblock content%}

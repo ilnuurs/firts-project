@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content%}  
+
+    {{gmail}}
+    {{phone}}
+    {{email}}
+     {% for media in social_media %}
+            {{  media  }}
+        {%  endfor %}
+
+{% endblock content%}

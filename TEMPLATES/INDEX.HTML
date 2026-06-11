@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+
+    <div class="header_img">
+        <img src="{% static 'images/photo2.png' %}" alt="">
+    </div>
+
+    <div class="container">
+        <div class="categories_cards">
+            {% for category in categories%}
+                <div class="category_card">
+                    <div>
+                        <img src="{{category.image.url}}" alt="">
+                    </div>
+        
+                    <div>
+                        {{category.name}}
+                    </div>
+                </div>
+            
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="product'">
+            <div class="cards">
+                {% for product in products %}
+
+                <div class="product_card">
+                    <a class="product_button" href="{% url 'product_detail' id=product.id %}" >
+                        <div class="product_image">
+                            {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="">
+                            {% endif %}
+                        </div>
+
+                        <div>
+                            <div>{{product.name}}</div>
+                            <div>{{product.price}}</div>
+                            <div>{{product.color}}</div>
+                            <div>{{product.description}}</div>
+                            <div>{{product.category.name}}</div>
+                        </div>  
+                        <a href="{% url 'product_delete' pk=product.id %}">delete</a>
+                        <a href="{% url 'product_update' id=product.id %}">update</a>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+            
+    </div>
+</div>
+        <script src="{% static 'js/main.js' %}"></script>
+
+
+{% endblock content%}

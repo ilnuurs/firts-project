@@ -19,8 +19,16 @@ class Product(models.Model):
     image = models.ImageField(verbose_name="Изображение", upload_to="products/", null=True, blank=True)  
     created_at = models.DateField(verbose_name="Создано в", auto_now_add=True)
     updated_at = models.DateField(verbose_name="Дата обновление", auto_now=True)
-    
+    tags = models.ManyToManyField('Tag', related_name='products')
     def __str__(self):
         return f'{self.name} - coin{self.price}'
 
+            
+class Tag(models.Model):
+    name = models.CharField(max_length=200, verbose_name="название")
     
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name = "Ter"
+        verbose_name_plural = "теги"

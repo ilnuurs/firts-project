@@ -15,7 +15,14 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ("id",'name')
     list_display_links = ("id", 'name')
     search_fields = ('name',)
+    filter_horizontal = ('tags',)
+    readonly_fields = ('created_at')
     
+    
+class TagAdmin(admin.ModelAdmin):
+    list_display = ("id",'name')
+    list_display_links = ("id", 'name')
+    search_fields = ('name',)
     
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
